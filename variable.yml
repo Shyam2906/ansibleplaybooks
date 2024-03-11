@@ -1,0 +1,16 @@
+---
+- hosts: webservers
+  become: yes
+
+
+
+  vars:
+    user: sunny
+
+
+
+  tasks:
+    - name: creating a user {{user}}
+      user:
+        name: '{{user}}'
+

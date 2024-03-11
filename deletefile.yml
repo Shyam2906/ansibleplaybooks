@@ -1,0 +1,10 @@
+--- # Deleting file
+- hosts: webservers
+  user: ansible
+
+
+  tasks:
+    - name: Deleting a file
+      file:
+        name: demofile
+        state: absent

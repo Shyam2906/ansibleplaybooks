@@ -1,0 +1,12 @@
+--- # Installing multiple software
+- hosts: webservers
+  become: yes
+  user: ansible
+  connection: ssh
+
+
+  tasks:
+    - name: Installing multiple packages
+      yum:
+        name: ['git', 'which', 'httpd', 'docker', 'mysql', 'tree', 'java', 'wget']
+        state: present

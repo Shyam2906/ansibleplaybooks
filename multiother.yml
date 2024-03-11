@@ -1,0 +1,17 @@
+--- # Loop playbook
+- hosts: webservers
+  become: yes
+  connection: ssh
+  user: ansible
+
+
+  tasks:
+    - name: Installing  multiple package via loop
+      yum: name='{{item}}' state=present
+      with_items:
+           - git
+           - java
+           - docker
+           - tree
+           - mysql
+           - httpd

@@ -1,0 +1,9 @@
+--- 
+- hosts: webservers
+  become: true
+
+  tasks:
+    - name: installing a software
+      yum:
+        name: java
+        state: present

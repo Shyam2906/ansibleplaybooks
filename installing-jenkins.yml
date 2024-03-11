@@ -1,0 +1,51 @@
+--- # Installing Jenkins
+- hosts: webservers
+  become: yes
+  user: ansible
+  connection: ssh
+
+  tasks:
+    - name: Installing Java on redhat
+      yum:
+        name: java
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Installing Java on Debian
+      apt:
+        name: default-jdk
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Download Jenkins Software
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: download rpm key
+      rpm_key:
+        state: present
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+    - name: Install jenkins
+      yum:
+        name: jenkins
+        state: present
+
+    - name: Start jenkins service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes 
+
+
+
+
+
+
+
+
+
+
+
+

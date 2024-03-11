@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  user: ansible
+
+  tasks:
+    - name: Deleting folder
+      file:
+        name: testdir
+        state: absent

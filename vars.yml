@@ -1,0 +1,18 @@
+--- # Variable playbook
+- hosts: webservers
+  user: ansible
+  become: yes
+
+  
+
+
+  vars:
+    pkgname: httpd
+
+
+
+  tasks:
+    - name: Installing httpd
+      yum:
+        name: '{{pkgname}}'
+        state: present

@@ -1,0 +1,13 @@
+--- # My taks playbook
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: Installing httpd in webservers
+      yum:
+        name: htt
+        state: installed
+      ignore_errors: yes

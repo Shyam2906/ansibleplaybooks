@@ -1,0 +1,15 @@
+--- # creating multiuser
+- hosts: webservers
+  become: true
+  user: ansible
+  connection: ssh
+
+
+  tasks:
+    - name: creating multiple users
+      user: name="{{item}}" state=present
+      with_items:
+         - AAA
+         - BBB
+         - CCC
+         - DDD

@@ -1,0 +1,58 @@
+---
+- hosts: all
+  become: yes
+  connection: ssh
+  user: ansible
+
+
+
+  tasks:
+    - name: install httpd package
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+
+    - name: starting service
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == 'RedHat'
+
+
+
+    - name: Installling apache2
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == 'Debian'
+
+
+    - name: Starting service
+      service:
+        name: apache2
+        state: started
+      when: ansible_os_family == 'Debian'
+
+
+    - name: copying index.html file
+      copy:
+        src: /home/ansible/index.html
+        dest: /var/www/html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+---
+- hosts: all
+  become: yes
+  connection: ssh
+  user: ansible
+
+
+  tasks:
+    - name: creating a file with ansible playbook
+      file:
+        path: /home/goofyfile
+        state: file
+
+    - name: creating a folder with ansible playbook
+      file:
+        path: /home/gofydirectory
+        state: directory
+
+
+    - name: copying file to hosts
+      copy:
+        src: ./adanifile
+        dest: /home/ansible
+
+
+
+
+
+
+
+
+
+
+

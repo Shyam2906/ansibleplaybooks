@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  connection: ssh
+
+
+  tasks:
+    - name: installing package
+      action: yum pkg=httpd state=present
+
+
+    - name: starting service
+      action: service name=httpd state=started

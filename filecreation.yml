@@ -1,0 +1,10 @@
+--- # Creating a file
+- hosts: all
+  user: ansible
+
+
+  tasks:
+    - name: Creating a file
+      file:
+        path: /tmp/tttfile
+        state: touch

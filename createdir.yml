@@ -1,0 +1,9 @@
+--- # Creating a Directory
+- hosts: all
+  user: ansible
+
+  tasks:
+    - name: Creating a directory in webservers
+      file:
+        path: /home/ansible/testdirectory
+        state: directory

@@ -1,0 +1,11 @@
+--- # Installing a package
+- hosts: webservers
+  user: ansible
+  become: yes
+
+
+  tasks:
+    - name: Installing Softwares
+      yum:
+        name: docker
+        state: present
